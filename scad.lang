@@ -68,6 +68,9 @@
       <keyword>include</keyword>
       <keyword>use</keyword>
       
+      <keyword>true</keyword>
+      <keyword>false</keyword>
+      
       <keyword>circle</keyword>
       <keyword>square</keyword>
       <keyword>polygon</keyword>
