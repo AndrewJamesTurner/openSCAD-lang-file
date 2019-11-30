@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	The MIT License (MIT)
+  The MIT License (MIT)
 
-	Copyright (c) <2014> <Andrew James Turner>
+  Copyright (c) <2014> <Andrew James Turner>
 
-	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files (the "Software"), to deal
-	in the Software without restriction, including without limitation the rights
-	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	copies of the Software, and to permit persons to whom the Software is
-	furnished to do so, subject to the following conditions:
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
 
-	The above copyright notice and this permission notice shall be included in
-	all copies or substantial portions of the Software.
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-	THE SOFTWARE.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
 -->
 
-<language id="scad" _name="SCAD" version="2.0" _section="Sources">
+<language id="scad" name="SCAD" version="2.0" section="Source">
   <metadata>
     <property name="mimetypes">text/x-scad</property>
     <property name="globs">*.scad</property>
@@ -33,29 +33,27 @@
   </metadata>
 
   <styles>
-    <style id="comment"           _name="Comment"               map-to="def:comment"/>
-    <style id="keyword"           _name="Keyword"               map-to="def:keyword"/>
-    <style id="floating-point"    _name="Floating point number" map-to="def:floating-point"/>
-    <style id="decimal"           _name="Decimal number"        map-to="def:decimal"/>    
+    <style id="comment"         _name="Comment"               map-to="def:comment"/>
+    <style id="keyword"         _name="Keyword"               map-to="def:keyword"/>
+    <style id="floating-point"  _name="Floating point number" map-to="def:floating-point"/>
+    <style id="decimal"         _name="Decimal number"        map-to="def:decimal"/>
   </styles>
 
   <definitions>
-
     <define-regex id="identifier">[_a-zA-Z][_a-zA-Z0-9]*</define-regex>
     <define-regex id="number">[1-9][0-9]*</define-regex>
 
     <context id="comment" style-ref="comment">
-		<start>\/\/</start>
-		<end>$</end>
-	</context>
-  
-	<context id="comment-multiline" style-ref="comment">
-	<start>\/\*</start>
-	<end>\*\/</end>   
-	</context>
-  
-  
-   <context id="decimal" style-ref="decimal">
+      <start>\/\/</start>
+      <end>$</end>
+    </context>
+
+    <context id="comment-multiline" style-ref="comment">
+    <start>\/\*</start>
+    <end>\*\/</end>
+    </context>
+
+    <context id="decimal" style-ref="decimal">
       <match>\b([1-9][0-9]*|0)([Uu]([Ll]|LL|ll)?|([Ll]|LL|ll)[Uu]?)?\b</match>
     </context>
 
@@ -64,22 +62,62 @@
     </context>
 
     <context id="keywords" style-ref="keyword">
+      <!--Syntax-->
+      <!--
+      <keyword>=</keyword>
+      <keyword>?</keyword>
+      <keyword>:</keyword>
+      -->
       <keyword>module</keyword>
+      <keyword>function</keyword>
       <keyword>include</keyword>
       <keyword>use</keyword>
-      
+
       <keyword>true</keyword>
       <keyword>false</keyword>
-      
+
+      <!--Constants-->
+      <keyword>undef</keyword>
+      <keyword>PI</keyword>
+
+      <!--Special variables-->
+      <keyword>fa</keyword>
+      <keyword>fs</keyword>
+      <keyword>fn</keyword>
+      <keyword>t</keyword>
+      <keyword>vpr</keyword>
+      <keyword>vpt</keyword>
+      <keyword>vpd</keyword>
+      <keyword>children</keyword>
+      <keyword>preview</keyword>
+
+      <!--Modifier Characters-->
+      <!--
+      <keyword>*</keyword>
+      <keyword>!</keyword>
+      <keyword>#</keyword>
+      <keyword>%</keyword>
+      -->
+
+      <!--2D-->
       <keyword>circle</keyword>
       <keyword>square</keyword>
       <keyword>polygon</keyword>
-      
+      <keyword>text</keyword>
+      <keyword>import</keyword>
+      <keyword>projection</keyword>
+
+      <!--3D-->
       <keyword>sphere</keyword>
       <keyword>cube</keyword>
       <keyword>cylinder</keyword>
       <keyword>polyhedron</keyword>
-      
+  <!--    <keyword>import</keyword>-->
+      <keyword>linear_extrude</keyword>
+      <keyword>rotate_extrude</keyword>
+      <keyword>surface</keyword>
+
+      <!--Transformations-->
       <keyword>translate</keyword>
       <keyword>rotate</keyword>
       <keyword>scale</keyword>
@@ -87,78 +125,83 @@
       <keyword>mirror</keyword>
       <keyword>multmatrix</keyword>
       <keyword>color</keyword>
+      <keyword>offset</keyword>
       <keyword>hull</keyword>
       <keyword>minkowski</keyword>
-      
-	  <keyword>union</keyword>
-	  <keyword>difference</keyword>
-	  <keyword>intersection</keyword>
-	  <keyword>resize</keyword>
-	  <keyword>mirror</keyword>
-	  <keyword>multmatrix</keyword>
-	  <keyword>color</keyword>
-	  <keyword>hull</keyword>
-	  <keyword>minkowski</keyword>
-	  
-	  <keyword>union</keyword>
-	  <keyword>difference</keyword>
-	  <keyword>intersection</keyword>
-      
-	  <keyword>abs</keyword>
-	 <keyword>sign</keyword>
-	 <keyword>sin</keyword>
-	 <keyword>cos</keyword>
-	 <keyword>tan</keyword>
-	 <keyword>acos</keyword>
-	 <keyword>asin</keyword>
-	 <keyword>atan</keyword>
-	 <keyword>atan2</keyword>
-	 <keyword>floor</keyword>
-	 <keyword>round</keyword>
-	 <keyword>ceil</keyword>
-	 <keyword>ln</keyword>
-	 <keyword>len</keyword>
-	 <keyword>log</keyword>
-	 <keyword>pow</keyword>
-	 <keyword>sqrt</keyword>
-	 <keyword>exp</keyword>
-	 <keyword>rands</keyword>
-	 <keyword>min</keyword>
-	 <keyword>max</keyword>
-	 
-	 <keyword>lookup</keyword>
-	 <keyword>str</keyword>
-     <keyword>search</keyword>
- 	 <keyword>version</keyword>
-	 <keyword>version_num</keyword>
-	 <keyword>norm</keyword>
-	 <keyword>cross</keyword>
-	 <keyword>parent_module</keyword>
-	 
-	 
-	 <keyword>echo</keyword>
-	 <keyword>for</keyword>
-     <keyword>intersection_for</keyword>
- 	 <keyword>if</keyword>
-	 <keyword>assign</keyword>
-	 <keyword>import</keyword>
-	 <keyword>linear_extrude</keyword>
-	 <keyword>rotate_extrude</keyword>	 
-	 <keyword>surface</keyword>
-	 <keyword>projection</keyword>
-	 <keyword>render</keyword>
-	 <keyword>children</keyword>
-	 	 
-	 <keyword>fa</keyword>
-	 <keyword>fs</keyword>
-	 <keyword>fn</keyword>
-	 <keyword>t</keyword>	 
+
+      <!--Boolean operations-->
+      <keyword>union</keyword>
+      <keyword>difference</keyword>
+      <keyword>intersection</keyword>
+
+      <!--List Comprehensions-->
+      <keyword>Generate</keyword>
+      <keyword>Flattern</keyword>
+      <keyword>Conditions</keyword>
+      <keyword>Assignments</keyword>
+
+      <!--Flow Control-->
+      <keyword>for</keyword>
+      <keyword>intersection_for</keyword>
+      <keyword>if</keyword>
+      <keyword>else</keyword>
+      <keyword>let</keyword>
+
+      <!--Type test functions-->
+      <keyword>is_undef</keyword>
+      <keyword>is_bool</keyword>
+      <keyword>is_num</keyword>
+      <keyword>is_string</keyword>
+      <keyword>is_list</keyword>
+
+      <!--Other-->
+      <keyword>echo</keyword>
+      <keyword>render</keyword>
+      <keyword>children</keyword>
+      <keyword>assert</keyword>
+      <keyword>assign</keyword> <!-- Deprecated -->
+
+      <!--Functions-->
+      <keyword>concat</keyword>
+      <keyword>lookup</keyword>
+      <keyword>str</keyword>
+      <keyword>chr</keyword>
+      <keyword>ord</keyword>
+      <keyword>search</keyword>
+      <keyword>version</keyword>
+      <keyword>version_num</keyword>
+      <keyword>parent_module</keyword>
+
+      <!--Mathematical-->
+      <keyword>abs</keyword>
+      <keyword>sign</keyword>
+      <keyword>sin</keyword>
+      <keyword>cos</keyword>
+      <keyword>tan</keyword>
+      <keyword>acos</keyword>
+      <keyword>asin</keyword>
+      <keyword>atan</keyword>
+      <keyword>atan2</keyword>
+      <keyword>floor</keyword>
+      <keyword>round</keyword>
+      <keyword>ceil</keyword>
+      <keyword>ln</keyword>
+      <keyword>len</keyword>
+      <keyword>log</keyword>
+      <keyword>pow</keyword>
+      <keyword>sqrt</keyword>
+      <keyword>exp</keyword>
+      <keyword>rands</keyword>
+      <keyword>min</keyword>
+      <keyword>max</keyword>
+      <keyword>norm</keyword>
+      <keyword>cross</keyword>
     </context>
 
     <!--Main context-->
     <context id="scad" class="no-spell-check">
       <include>
-        <context ref="gtk-doc:inline-docs-section"/>    
+        <context ref="gtk-doc:inline-docs-section"/>
         <context ref="floating-point"/>
         <context ref="decimal"/>
         <context ref="keywords"/>
