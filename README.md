@@ -8,6 +8,13 @@ Email: andrew.turner@york.ac.uk, marcel.jira@gmail.com
 License: The MIT License (MIT)  
 
 ### Installation  
+
+#### Automated
+
+./install.sh
+
+#### Manual 
+
 copy `scad.lang` to `/home/user-name/.local/share/gtksourceview-4/language-specs/`    
 (on older installations it might be `gtksourceview-3.0` or `gtksourceview-2.0` instead)      
     
